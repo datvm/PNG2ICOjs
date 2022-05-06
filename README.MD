@@ -25,7 +25,7 @@ const resultBlob2 = await converter.convertToBlobAsync(inputs, "image/your-own-m
 const resultArr = await converter.convertAsync(inputs);
 ```
 
-You can check the demo at [the Demo page](https://png2icojs.lukevo.com/demo).
+You can check the demo at [the Demo page](https://png2icojs.lukevo.com/).
 
 # API
 

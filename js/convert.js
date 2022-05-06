@@ -1,16 +1,24 @@
 import { PngIcoConverter } from "../src/png2icojs.js";
 
+const ErrorMessages = {
+    "INVALID_IMAGE": "Cannot open the PNG file, please make sure it's a valid PNG file",
+    "INVALID_SIZE": "The PNG file is larger than 256px. Please check Ignore Size to proceed anyway.",
+};
+
 class ConvertApp {
 
     btnDownload = document.querySelector("#btn-download");
 
     init() {
-        document.querySelector("form").addEventListener("submit", e => {
+        document.querySelector(".frm-convert").addEventListener("submit", e => {
             e.preventDefault();
             void this.convert();
         });
-        this.btnDownload.addEventListener("click",
-            () => this.onDownload());
+
+        document.querySelector(".frm-download").addEventListener("submit", e => {
+            e.preventDefault();
+            void this.onDownload();
+        });
     }
 
     onDownload() {
@@ -19,7 +27,10 @@ class ConvertApp {
         const url = URL.createObjectURL(this.currBlob);
         const a = document.createElement("a");
         a.href = url;
-        a.download = "icon.ico";
+
+        const name = document.querySelector("#txt-name").value || "favicon.ico";
+        a.download = name;
+
         a.click();
     }
 
@@ -42,7 +53,11 @@ class ConvertApp {
             this.btnDownload.removeAttribute("disabled");
         } catch (e) {
             console.error(e);
-            alert("Error converting: " + e.message);
+
+            const msg = e.message;
+            if (msg) {
+                alert("Error converting: " + (ErrorMessages[msg] ?? msg));
+            }
         }
     }
 
