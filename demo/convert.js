@@ -1,4 +1,4 @@
-import { PngIcoConverter } from "../src/PngIcoConverter.js";
+import { PngIcoConverter } from "../src/png2icojs.js";
 
 class ConvertApp {
 

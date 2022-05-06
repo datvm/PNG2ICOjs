@@ -82,4 +82,4 @@ export class PngIcoConverter {
         return total;
     }
 }
-//# sourceMappingURL=PngIcoConverter.js.map
+//# sourceMappingURL=png2icojs.js.map
