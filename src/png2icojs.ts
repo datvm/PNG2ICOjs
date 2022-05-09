@@ -26,7 +26,7 @@ export class PngIcoConverter {
         // File Format: https://en.wikipedia.org/wiki/ICO_(file_format)
 
         // File Header + Image Header + Image Content
-        const headersLen = FileHeaderSize + ImageHeaderSize * 16;
+        const headersLen = FileHeaderSize + ImageHeaderSize * inLen;
         const totalLen = headersLen + this.sumInputLen(inputs);
         const arr = new Uint8Array(totalLen);
 
